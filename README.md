@@ -38,10 +38,10 @@ Can an ethanolic extract of Neem leaves act as a natural fertilizer, increasing 
 **Growth rate** (linear mixed model, random intercept and slope per plant):
 
 - Control: **0.390 cm/week**
-- Neem: **0.474 cm/week** (+0.084 cm/week, p = 0.036)
+- Neem: **0.474 cm/week** (+0.084 cm/week; p = 0.036 with a large-sample z-test in Python, p = 0.051 with the small-sample Satterthwaite t-test in R)
 - By week 10, mean height was 5.48 cm (Neem) vs 4.68 cm (Control); the gap widened from 0.25 cm at week 1 to 0.80 cm at week 10.
 
-These numbers reproduce the values reported in the paper.
+These numbers reproduce the values reported in the paper. Python (pingouin/statsmodels) and R (afex/lmerTest) give identical ANOVA tables; full R output is in [`results/R_output.txt`](results/R_output.txt).
 
 ### Interpretation
 
@@ -53,7 +53,7 @@ These numbers reproduce the values reported in the paper.
 
 - **Small sample** (n = 10 per group). Week-by-week Welch t-tests are significant uncorrected at weeks 5–10, but none survive Holm correction for 10 comparisons (smallest adjusted p = 0.07, week 8). The overall effect is detected by the ANOVA/mixed model, which pools all weeks.
 - **Sphericity is violated** (Mauchly p < 0.001), so the corrected interaction p (0.040) is the conservative one to cite.
-- A simple t-test on per-plant growth slopes is borderline (p = 0.053); the mixed model, which uses all 200 observations, gives p = 0.036.
+- The growth-rate difference on its own is **borderline**: per-plant slope t-test p = 0.053, mixed model p = 0.036 (z-test) or p = 0.051 (Satterthwaite, the more conservative small-sample version). The interaction in the mixed ANOVA (p = 0.040 GG-corrected) is the main evidence that Neem plants grew faster.
 - Plants were not watered on Sundays or on Good Friday (lab closed). This affected both groups equally.
 - The TLC analysis used methanol (not ethanol, which was used for the applied extract), since methanol cannot be used in a school lab.
 - Only the fertilizer effect was tested; the pesticide effect of Neem was not.
@@ -69,7 +69,8 @@ analysis/
   analysis.py                  # full analysis (Python) — produces everything in results/
   analysis.R                   # same analysis in R (afex + lmerTest)
 results/
-  statistical_report.txt       # complete text output of the analysis
+  statistical_report.txt       # complete text output of the Python analysis
+  R_output.txt                 # complete text output of the R analysis
   descriptive_stats.csv        # mean, SD, min, max, 95% CI by week and group
   mixed_anova.csv              # ANOVA table
   posthoc_group_by_week.csv    # Neem vs Control at each week

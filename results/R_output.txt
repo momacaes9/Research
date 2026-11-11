@@ -1,0 +1,109 @@
+   week   group height_cm.mean height_cm.sd height_cm.n
+1     1 control           1.08    0.4263541          10
+2     2 control           1.51    0.6045200          10
+3     3 control           1.93    0.5417051          10
+4     4 control           2.34    0.5460973          10
+5     5 control           2.66    0.5853774          10
+6     6 control           3.05    0.5816643          10
+7     7 control           3.41    0.5445691          10
+8     8 control           3.78    0.4263541          10
+9     9 control           4.25    0.5190804          10
+10   10 control           4.68    0.6033241          10
+11    1    neem           1.33    0.5165054          10
+12    2    neem           1.79    0.5646041          10
+13    3    neem           2.38    0.6972964          10
+14    4    neem           2.93    0.7454305          10
+15    5    neem           3.48    0.9658617          10
+16    6    neem           3.99    1.1551335          10
+17    7    neem           4.43    1.0317730          10
+18    8    neem           4.83    1.0033832          10
+19    9    neem           5.17    0.9055999          10
+20   10    neem           5.48    0.7814516          10
+Contrasts set to contr.sum for the following variables: group
+Anova Table (Type 3 tests)
+
+Response: height_cm
+        Effect          df  MSE          F  pes p.value
+1        group       1, 18 3.97     6.38 * .262    .021
+2       week_f 2.20, 39.52 0.54 259.09 *** .935   <.001
+3 group:week_f 2.20, 39.52 0.54     3.38 * .158    .040
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1
+
+Sphericity correction method: GG 
+
+Univariate Type III Repeated-Measures ANOVA Assuming Sphericity
+
+              Sum Sq num Df Error SS den Df  F value    Pr(>F)    
+(Intercept)  2080.12      1   71.474     18 523.8598 9.276e-15 ***
+group          25.35      1   71.474     18   6.3835 0.0211084 *  
+week_f        309.22      9   21.482    162 259.0922 < 2.2e-16 ***
+group:week_f    4.04      9   21.482    162   3.3824 0.0007906 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Mauchly Tests for Sphericity
+
+             Test statistic    p-value
+week_f           1.8493e-06 3.1338e-20
+group:week_f     1.8493e-06 3.1338e-20
+
+
+Greenhouse-Geisser and Huynh-Feldt Corrections
+ for Departure from Sphericity
+
+              GG eps Pr(>F[GG])    
+week_f       0.24397     <2e-16 ***
+group:week_f 0.24397       0.04 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                HF eps   Pr(>F[HF])
+week_f       0.2792464 3.389475e-27
+group:week_f 0.2792464 3.299187e-02
+ contrast       week_f estimate    SE df t.ratio p.value
+ control - neem X1        -0.25 0.212 18  -1.180  0.5064
+ control - neem X2        -0.28 0.262 18  -1.070  0.5064
+ control - neem X3        -0.45 0.279 18  -1.612  0.3733
+ control - neem X4        -0.59 0.292 18  -2.019  0.2345
+ control - neem X5        -0.82 0.357 18  -2.296  0.2024
+ control - neem X6        -0.94 0.409 18  -2.298  0.2024
+ control - neem X7        -1.02 0.369 18  -2.765  0.1095
+ control - neem X8        -1.05 0.345 18  -3.046  0.0696
+ control - neem X9        -0.92 0.330 18  -2.787  0.1095
+ control - neem X10       -0.80 0.312 18  -2.562  0.1371
+
+P value adjustment: holm method for 10 tests 
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: height_cm ~ week_c * group + (week_c | plant_id)
+   Data: df
+
+REML criterion at convergence: 170.7
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.6051 -0.5512 -0.0254  0.5135  3.9088 
+
+Random effects:
+ Groups   Name        Variance Std.Dev. Corr  
+ plant_id (Intercept) 0.341283 0.58419        
+          week_c      0.007151 0.08456  -0.22 
+ Residual             0.071226 0.26688        
+Number of obs: 200, groups:  plant_id, 20
+
+Fixed effects:
+                 Estimate Std. Error       df t value Pr(>|t|)    
+(Intercept)       1.11182    0.19128 18.00083   5.812 1.66e-05 ***
+week_c            0.39048    0.02831 18.00000  13.794 5.20e-11 ***
+groupneem         0.33455    0.27051 18.00083   1.237   0.2321    
+week_c:groupneem  0.08388    0.04004 18.00000   2.095   0.0506 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) week_c gropnm
+week_c      -0.269              
+groupneem   -0.707  0.190       
+wek_c:grpnm  0.190 -0.707 -0.269

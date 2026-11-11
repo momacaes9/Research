@@ -32,14 +32,16 @@ summary(fit)  # includes Mauchly's test
 
 # 3. Post-hoc: Neem vs Control at each week (Holm) ------------------------------
 emm <- emmeans(fit, ~ group | week_f)
-print(pairs(emm, adjust = "holm"))
+# by = NULL pools all 10 weekly contrasts so Holm corrects across weeks
+print(test(pairs(emm), by = NULL, adjust = "holm"))
 
 # 4. Linear mixed model: growth rate per group ----------------------------------
 df$week_c <- df$week - 1
 lmm <- lmer(height_cm ~ week_c * group + (week_c | plant_id), data = df, REML = TRUE)
 print(summary(lmm))
 # week_c            ~0.390 cm/week (control)
-# week_c:groupneem  ~0.084 cm/week extra for Neem (p ~ .04)
+# week_c:groupneem  ~0.084 cm/week extra for Neem
+# (Satterthwaite df = 18: p = .051; Python statsmodels Wald z-test: p = .036)
 
 # 5. Figure ---------------------------------------------------------------------
 p <- ggplot(df, aes(week, height_cm, colour = group)) +
