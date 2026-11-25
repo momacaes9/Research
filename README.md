@@ -1,5 +1,7 @@
 # AGRO-BHARAT — Neem-based fertilizer for bell pepper
 
+[![Reproduce analysis](https://github.com/momacaes9/Research/actions/workflows/reproduce.yml/badge.svg)](https://github.com/momacaes9/Research/actions/workflows/reproduce.yml)
+
 **Development of a product with fertilizer function formulated from Indian Neem (*Azadirachta indica*) properties**
 
 Monica Grenadier Macaes, Laura Franchini Placido — advisor: Dr. Juliana Izidoro
