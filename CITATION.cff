@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this data or analysis, please cite it as below."
+title: "AGRO-BHARAT: Neem-based fertilizer for bell pepper — data and statistical analysis"
+authors:
+  - family-names: Grenadier Macaes
+    given-names: Monica
+  - family-names: Franchini Placido
+    given-names: Laura
+repository-code: "https://github.com/momacaes9/Research"
+abstract: >-
+  Experimental data and a reproducible statistical analysis (Python and R) of a
+  10-week study testing whether an ethanolic extract of Indian Neem
+  (Azadirachta indica) leaves increases the growth of bell pepper
+  (Capsicum annuum) seedlings compared with water alone.
+keywords:
+  - neem
+  - Azadirachta indica
+  - bell pepper
+  - natural fertilizer
+  - mixed ANOVA
+  - linear mixed model
